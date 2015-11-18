@@ -32,10 +32,18 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ini_toolBar();
         ini_listView();
 
     }
-    
+
+    public void ini_toolBar(){
+        ActionBar actionBar = getSupportActionBar();
+        //actionBar.setLogo(R.drawable.logoJambo);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#A1887F")));
+        //actionBar.setDisplayShowHomeEnabled(true);
+    }
 
     public void ini_listView(){
         String[] ArrayPlats ={
