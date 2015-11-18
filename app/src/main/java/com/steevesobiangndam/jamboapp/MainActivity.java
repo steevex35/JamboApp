@@ -45,6 +45,10 @@ public class MainActivity extends ActionBarActivity {
         //actionBar.setDisplayShowHomeEnabled(true);
     }
 
+    /**
+     * TO-DO mettre la listView dans un thread
+     */
+
     public void ini_listView(){
         String[] ArrayPlats ={
                 "Poulet yassa -- €€",
