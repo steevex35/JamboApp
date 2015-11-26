@@ -19,14 +19,20 @@ import android.widget.Toast;
 
 import com.steevesobiangndam.jamboapp.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
     ArrayAdapter<String> mForecastAdapter;
+    private ArrayList<HashMap<String, String>> listHashVoyage = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +44,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void ini_toolBar(){
-        ActionBar actionBar = getSupportActionBar();
+        toolbar=(Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        toolbar.setLogo(R.drawable.tool_icon);
+        getSupportActionBar().setTitle(Html.fromHtml("<center><font color='#ffffff'> Jambo</font></center>"));
+        //toolbar.setLogo(R.drawable.ic_logo);
+        //ActionBar actionBar = getSupportActionBar();
         //actionBar.setLogo(R.drawable.logoJambo);
-        actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#A1887F")));
+        //actionBar.setDisplayUseLogoEnabled(true);
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F16A30")));
         //actionBar.setDisplayShowHomeEnabled(true);
     }
 
@@ -71,8 +82,49 @@ public class MainActivity extends ActionBarActivity {
                         //Forecast data
                         listPlats);
         ListView listView = (ListView) findViewById(R.id.listView_plats);
-        listView.setAdapter(mForecastAdapter);
+        //listView.setAdapter(mForecastAdapter);
 
+        JSONObject plat1 = new JSONObject();
+        try {
+            plat1.put("id", "1");
+            plat1.put("nom", "Poulet Yassa");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        JSONObject plat2 = new JSONObject();
+        try {
+            plat2.put("id", "2");
+            plat2.put("nom", "Poulet DG");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        JSONArray jsonArrayPlats = new JSONArray();
+        jsonArrayPlats.put(plat1);
+        jsonArrayPlats.put(plat2);
+
+        for (int i =0; i<jsonArrayPlats.length();i++){
+            HashMap<String, String> hmap= new HashMap<String, String>();
+            try {
+                JSONObject json = jsonArrayPlats.getJSONObject(i);
+                String id = json.getString("id");
+                String nom= json.getString("nom");
+
+                hmap.put("id",id);
+                hmap.put("nom",nom);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            listHashVoyage.add(hmap);
+        }
+        // rajouter les plats dans la hashMap pour ensuite les afficher avec la listView
+
+        PlatAdapter platAdapter = new PlatAdapter(this,R.layout.list_row,listHashVoyage,this);
+        listView.setAdapter(platAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
