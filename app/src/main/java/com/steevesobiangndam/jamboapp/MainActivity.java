@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.steevesobiangndam.jamboapp.R;
@@ -182,11 +183,13 @@ public class MainActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String forecast = mForecastAdapter.getItem(position);
+                TextView nom = (TextView) view.findViewById(R.id.nom_plat);
+
+                String nomToSend = nom.getText().toString();
                 //Toast toast = Toast.makeText(getApplication(), forecast, Toast.LENGTH_SHORT);
                 //toast.show();
                 Intent intent = new Intent(getApplication(),DetailActivity.class);
-                intent.putExtra(Intent.EXTRA_TEXT, forecast);
+                intent.putExtra(Intent.EXTRA_TEXT, nomToSend);
                 startActivity(intent);
             }
         });
