@@ -48,12 +48,6 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.tool_icon);
         getSupportActionBar().setTitle(Html.fromHtml("<center><font color='#ffffff'> Jambo</font></center>"));
-        //toolbar.setLogo(R.drawable.ic_logo);
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.setLogo(R.drawable.logoJambo);
-        //actionBar.setDisplayUseLogoEnabled(true);
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F16A30")));
-        //actionBar.setDisplayShowHomeEnabled(true);
     }
 
     /**
@@ -81,13 +75,13 @@ public class MainActivity extends ActionBarActivity {
                         R.id.list_item_plats_textview,
                         //Forecast data
                         listPlats);
-        ListView listView = (ListView) findViewById(R.id.listView_plats);
+
         //listView.setAdapter(mForecastAdapter);
 
         JSONObject plat1 = new JSONObject();
         try {
             plat1.put("id", "1");
-            plat1.put("nom", "Poulet Yassa");
+            plat1.put("nom", "Pastels");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -96,15 +90,73 @@ public class MainActivity extends ActionBarActivity {
         JSONObject plat2 = new JSONObject();
         try {
             plat2.put("id", "2");
-            plat2.put("nom", "Poulet DG");
+            plat2.put("nom", "Salade africaine");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        JSONObject plat3 = new JSONObject();
+        try {
+            plat3.put("id", "3");
+            plat3.put("nom", "Yassa");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        JSONObject plat4 = new JSONObject();
+        try {
+            plat4.put("id", "4");
+            plat4.put("nom", "Pundu");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
+        JSONObject plat5 = new JSONObject();
+        try {
+            plat4.put("id", "5");
+            plat4.put("nom", "Tieboudiem");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        JSONObject plat6 = new JSONObject();
+        try {
+            plat4.put("id", "6");
+            plat4.put("nom", "Bissap");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        JSONObject plat7 = new JSONObject();
+        try {
+            plat7.put("id", "7");
+            plat7.put("nom", "Gingembre");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        JSONObject plat8 = new JSONObject();
+        try {
+            plat4.put("id", "8");
+            plat4.put("nom", "Tiramisu saveurs exotiques");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
         JSONArray jsonArrayPlats = new JSONArray();
         jsonArrayPlats.put(plat1);
         jsonArrayPlats.put(plat2);
+        jsonArrayPlats.put(plat3);
+        jsonArrayPlats.put(plat4);
+        jsonArrayPlats.put(plat5);
+        jsonArrayPlats.put(plat6);
+        jsonArrayPlats.put(plat7);
+        jsonArrayPlats.put(plat8);
+
 
         for (int i =0; i<jsonArrayPlats.length();i++){
             HashMap<String, String> hmap= new HashMap<String, String>();
@@ -115,14 +167,16 @@ public class MainActivity extends ActionBarActivity {
 
                 hmap.put("id",id);
                 hmap.put("nom",nom);
+                listHashVoyage.add(hmap);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            listHashVoyage.add(hmap);
+
         }
         // rajouter les plats dans la hashMap pour ensuite les afficher avec la listView
 
+        final ListView listView = (ListView) findViewById(R.id.listView_plats);
         PlatAdapter platAdapter = new PlatAdapter(this,R.layout.list_row,listHashVoyage,this);
         listView.setAdapter(platAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
