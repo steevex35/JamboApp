@@ -2,15 +2,27 @@ package com.steevesobiangndam.jamboapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class OrderActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+        ini_toolBar();
+    }
+
+    public void ini_toolBar(){
+        toolbar=(Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setLogo(R.drawable.tool_icon);
+        getSupportActionBar().setTitle(Html.fromHtml("<center><font color='#ffffff'> Mon Pagnier </font></center>"));
     }
 
     @Override
