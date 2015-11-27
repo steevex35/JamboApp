@@ -90,16 +90,16 @@ public class MainActivity extends ActionBarActivity {
 
         JSONObject plat5 = new JSONObject();
         try {
-            plat4.put("id", "5");
-            plat4.put("nom", "Tieboudiem");
+            plat5.put("id", "5");
+            plat5.put("nom", "Tieboudiem");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         JSONObject plat6 = new JSONObject();
         try {
-            plat4.put("id", "6");
-            plat4.put("nom", "Bissap");
+            plat6.put("id", "6");
+            plat6.put("nom", "Bissap");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -115,8 +115,8 @@ public class MainActivity extends ActionBarActivity {
         }
         JSONObject plat8 = new JSONObject();
         try {
-            plat4.put("id", "8");
-            plat4.put("nom", "Tiramisu saveurs exotiques");
+            plat8.put("id", "8");
+            plat8.put("nom", "Tiramisu saveurs exotiques");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
