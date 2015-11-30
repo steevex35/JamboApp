@@ -41,8 +41,8 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void ini_toolBar(){
-        toolbar=(Toolbar)findViewById(R.id.tool_bar);
+    public void ini_toolBar() {
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.tool_icon);
         getSupportActionBar().setTitle(Html.fromHtml("<center><font color='#ffffff'> Jambo</font></center>"));
@@ -50,9 +50,9 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * TO-DO mettre la listView dans un thread
-    */
+     */
 
-    public void ini_listView(){
+    public void ini_listView() {
 
         JSONObject plat1 = new JSONObject();
         try {
@@ -134,15 +134,15 @@ public class MainActivity extends ActionBarActivity {
         jsonArrayPlats.put(plat8);
 
 
-        for (int i =0; i<jsonArrayPlats.length();i++){
-            HashMap<String, String> hmap= new HashMap<String, String>();
+        for (int i = 0; i < jsonArrayPlats.length(); i++) {
+            HashMap<String, String> hmap = new HashMap<String, String>();
             try {
                 JSONObject json = jsonArrayPlats.getJSONObject(i);
                 String id = json.getString("id");
-                String nom= json.getString("nom");
+                String nom = json.getString("nom");
 
-                hmap.put("id",id);
-                hmap.put("nom",nom);
+                hmap.put("id", id);
+                hmap.put("nom", nom);
                 listHashPlats.add(hmap);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -150,7 +150,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         final ListView listView = (ListView) findViewById(R.id.listView_plats);
-        PlatAdapter platAdapter = new PlatAdapter(this,R.layout.list_row,listHashPlats,this);
+        PlatAdapter platAdapter = new PlatAdapter(this, R.layout.list_row, listHashPlats, this);
         listView.setAdapter(platAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -160,7 +160,7 @@ public class MainActivity extends ActionBarActivity {
                 String nomToSend = nom.getText().toString();
                 //Toast toast = Toast.makeText(getApplication(), forecast, Toast.LENGTH_SHORT);
                 //toast.show();
-                Intent intent = new Intent(getApplication(),DetailActivity.class);
+                Intent intent = new Intent(getApplication(), DetailActivity.class);
                 intent.putExtra(Intent.EXTRA_TEXT, nomToSend);
                 startActivity(intent);
             }
@@ -176,16 +176,15 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_order:
+                Intent intent = new Intent(MainActivity.this,OrderActivity.class);
+                startActivity(intent);
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
