@@ -45,8 +45,10 @@ public class PlatAdapter extends ArrayAdapter {
 
             //ImageView avatarCompte = (ImageView) mView.findViewById(R.id.avatarComptePersoRow);
             TextView nomCompte = (TextView) mView.findViewById(R.id.nom_plat);
+            TextView prixPlat=(TextView) mView.findViewById(R.id.prix);
 
             nomCompte.setText(items.get(position).get("nom"));
+        prixPlat.setText(items.get(position).get("prix"));
 
             return mView;
 
