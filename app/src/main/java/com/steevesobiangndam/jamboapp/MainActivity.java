@@ -60,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
             plat1.put("nom", "Pastels");
             plat1.put("prix","15€");
             plat1.put("rate","4");
+            plat1.put("avatar","pastels");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -70,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
             plat2.put("id", "2");
             plat2.put("nom", "Salade africaine");
             plat2.put("prix","8€");
+            plat2.put("avatar","salade");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -79,6 +81,7 @@ public class MainActivity extends ActionBarActivity {
             plat3.put("id", "3");
             plat3.put("nom", "Yassa");
             plat3.put("prix","14€");
+            plat3.put("avatar","yassa");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -87,7 +90,9 @@ public class MainActivity extends ActionBarActivity {
         try {
             plat4.put("id", "4");
             plat4.put("nom", "Pundu");
-            plat1.put("prix","15€");
+            plat4.put("prix","15€");
+            plat4.put("avatar","pundu");
+
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -98,6 +103,7 @@ public class MainActivity extends ActionBarActivity {
             plat5.put("id", "5");
             plat5.put("nom", "Tieboudiem");
             plat5.put("prix","9€");
+            plat5.put("avatar","tieboudiem");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -107,6 +113,7 @@ public class MainActivity extends ActionBarActivity {
             plat6.put("id", "6");
             plat6.put("nom", "Bissap");
             plat6.put("prix","9€");
+            plat6.put("avatar","bissap");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -117,6 +124,7 @@ public class MainActivity extends ActionBarActivity {
             plat7.put("id", "7");
             plat7.put("nom", "Gingembre");
             plat7.put("prix","2€");
+            plat7.put("avatar","gingembre");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -126,6 +134,7 @@ public class MainActivity extends ActionBarActivity {
             plat8.put("id", "8");
             plat8.put("nom", "Tiramisu saveurs exotiques");
             plat8.put("prix","5€");
+            plat8.put("avatar","tiramisu");
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -150,10 +159,12 @@ public class MainActivity extends ActionBarActivity {
                 String id = json.getString("id");
                 String nom = json.getString("nom");
                 String prix= json.getString("prix");
+                String avatar= json.getString("avatar");
 
                 hmap.put("id", id);
                 hmap.put("nom", nom);
                 hmap.put("prix",prix);
+                hmap.put("avatar",avatar);
                 listHashPlats.add(hmap);
             } catch (JSONException e) {
                 e.printStackTrace();

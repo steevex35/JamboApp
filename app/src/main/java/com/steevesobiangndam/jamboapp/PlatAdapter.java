@@ -2,14 +2,20 @@ package com.steevesobiangndam.jamboapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,12 +49,18 @@ public class PlatAdapter extends ArrayAdapter {
             mView = vi.inflate(id, null);
         }
 
-            //ImageView avatarCompte = (ImageView) mView.findViewById(R.id.avatarComptePersoRow);
+            ImageView imagePlat = (ImageView) mView.findViewById(R.id.list_image);
             TextView nomCompte = (TextView) mView.findViewById(R.id.nom_plat);
             TextView prixPlat=(TextView) mView.findViewById(R.id.prix);
 
-            nomCompte.setText(items.get(position).get("nom"));
-        prixPlat.setText(items.get(position).get("prix"));
+        String uri = "@drawable/"+items.get(position).get("avatar");
+        int imageResource = myContext.getResources().getIdentifier(uri, null,myContext.getPackageName());
+        Drawable res = myContext.getResources().getDrawable(imageResource);
+        imagePlat.setImageDrawable(res);
+
+        //imagePlat.setImageResource(R.drawable.pastels);
+        nomCompte.setText(items.get(position).get("nom"));
+            prixPlat.setText(items.get(position).get("prix"));
 
             return mView;
 
