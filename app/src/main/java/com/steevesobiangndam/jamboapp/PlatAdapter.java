@@ -53,6 +53,7 @@ public class PlatAdapter extends ArrayAdapter {
             TextView nomCompte = (TextView) mView.findViewById(R.id.nom_plat);
             TextView prixPlat=(TextView) mView.findViewById(R.id.prix);
 
+        //new thread !!!
         String uri = "@drawable/"+items.get(position).get("avatar");
         int imageResource = myContext.getResources().getIdentifier(uri, null,myContext.getPackageName());
         Drawable res = myContext.getResources().getDrawable(imageResource);
